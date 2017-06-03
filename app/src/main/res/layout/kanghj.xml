@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/kanghj"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="기초전기전자"
+            android:textSize="20dp"/>
+
+        <RatingBar android:id="@+id/khj_baseelectricelectron_Average"
+            android:paddingTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="0"
+            style="?android:attr/ratingBarStyleSmall"/>
+
+        <Button
+            android:id="@+id/khj_baseelectricelectron"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="평판"
+            android:onClick="onClick"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="c언어"
+            android:textSize="20dp"/>
+        <RatingBar android:id="@+id/khj_c_Average"
+            android:paddingTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="0"
+            style="?android:attr/ratingBarStyleSmall"/>
+        <Button
+            android:id="@+id/khj_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="평판"
+            android:onClick="onClick"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="디지털집적회로"
+            android:textSize="20dp"/>
+        <RatingBar android:id="@+id/khj_digital_Average"
+            android:paddingTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="0"
+            style="?android:attr/ratingBarStyleSmall"/>
+        <Button
+            android:id="@+id/khj_digital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="평판"
+            android:textSize="20dp"
+            android:onClick="onClick"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="마이크로프로세서"
+            android:textSize="20dp"/>
+        <RatingBar android:id="@+id/khj_microprocessor_Average"
+            android:paddingTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="0"
+            style="?android:attr/ratingBarStyleSmall"/>
+        <Button
+            android:id="@+id/khj_microprocessor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="평판"
+            android:textSize="20dp"
+            android:onClick="onClick"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/khjcall"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:onClick="onClickCall"
+            android:src="@drawable/ic_contact_phone_black_24dp"/>
+
+        <ImageButton
+            android:id="@+id/khjmail"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:onClick="onClickMail"
+            android:src="@drawable/ic_contact_mail_black_24dp"/>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+</LinearLayout>
