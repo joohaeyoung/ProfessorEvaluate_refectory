@@ -1,7 +1,6 @@
 package com.example.haeyoungjoo.hackerthon.NameChecker;
 
 import android.content.Context;
-import android.widget.RatingBar;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,17 +10,16 @@ import java.util.Vector;
  * Created by hae young Joo on 2017-05-30.
  */
 
-public abstract class AbstractProfessorNameChecker implements ProfessorNameChecker {
+public abstract class AbstractProfessorName implements ProfessorName {
 
     static Context vcontext;
     protected String NAME;
     protected String URL;
-    protected Vector<RatingBar> Averages;
+    protected Vector<Integer> Averages;
     Map< Integer, String > lectures = new HashMap<>();//강의 평가 액티비티로 넘어가기 위해서 .
     Vector<String> lectureName = new Vector<>();
 
-    public AbstractProfessorNameChecker(Context context){
-        this.vcontext  = context;
+    public AbstractProfessorName(){
     }
 
     @Override
@@ -49,18 +47,15 @@ public abstract class AbstractProfessorNameChecker implements ProfessorNameCheck
     }
 
     @Override
-    public Vector<RatingBar> ratingBarControl(){
+    public Vector<Integer> ratingBarControl(){
         return null;
     }
-    @Override
-    public void getView(){
-    }
+
     public String getCall(){
         return null;
     }
     public String getEmail(){
         return null;
     }
-
 
 }

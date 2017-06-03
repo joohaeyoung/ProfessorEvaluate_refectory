@@ -10,10 +10,10 @@ import android.view.View;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
-import com.example.haeyoungjoo.hackerthon.NameChecker.CYGNameChacker;
-import com.example.haeyoungjoo.hackerthon.NameChecker.JGCNameChacker;
-import com.example.haeyoungjoo.hackerthon.NameChecker.JGSNameChacker;
-import com.example.haeyoungjoo.hackerthon.NameChecker.ProfessorNameChecker;
+import com.example.haeyoungjoo.hackerthon.NameChecker.CYG;
+import com.example.haeyoungjoo.hackerthon.NameChecker.JGC;
+import com.example.haeyoungjoo.hackerthon.NameChecker.JGS;
+import com.example.haeyoungjoo.hackerthon.NameChecker.ProfessorName;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -38,10 +38,18 @@ import java.util.Vector;
 
 public class ViewActivity extends AppCompatActivity {
 
-    /*한 교수가 가르칠수 있는 최대과목이 4개밖에 없어서 RatingBar를 4개 선언 하였다*/
-    Vector<RatingBar> Averages = new Vector<RatingBar>();
-    Map<Integer,String> lectures = new HashMap<>();
 
+
+    /*한 교수가 가르칠수 있는 최대과목이 4개밖에 없어서 RatingBar를 4개 선언 하였다*/
+    RatingBar Average1;
+    RatingBar Average2;
+    RatingBar Average3;
+    RatingBar Average4;
+
+    RatingBar[] ratingBars = new RatingBar[4];
+    Vector<Integer> Averages = new Vector<Integer>();
+
+    Map<Integer,String> lectures = new HashMap<>();
     String phoneNumber;
     String emailAddress;
 
@@ -51,11 +59,11 @@ public class ViewActivity extends AppCompatActivity {
     // json으로 결과값을 받기위해 필요함!.
     String jsonResult1;
 
-    ProfessorNameChecker[] nameCheckers = new ProfessorNameChecker[] {
+    ProfessorName[] nameCheckers = new ProfessorName[] {
 
-            new CYGNameChacker(this),
-            new JGCNameChacker(this),
-            new JGSNameChacker(this)
+            new CYG(),
+            new JGC(),
+            new JGS()
 
     };
 
@@ -71,12 +79,17 @@ public class ViewActivity extends AppCompatActivity {
 
         /* 해당 이름에 맞는 activity를 보여준다 */
 
-        for (ProfessorNameChecker nameChecker : nameCheckers) {
+        for (ProfessorName nameChecker : nameCheckers) {
             if (nameChecker.isMatchName(professorName)) {
-                nameChecker.getView();
+                setContentView(nameChecker.getView());
                 url = nameChecker.getUrl();
+
                 Averages = nameChecker.ratingBarControl();
+                for(int i = 0 ; i < Averages.size() ; i++ )
+                    ratingBars[i] = (RatingBar) findViewById(Averages.get(i));
+
                 lectures = nameChecker.getLecture();
+
                 phoneNumber = nameChecker.getCall();
                 emailAddress = nameChecker.getEmail();
                 accessWebServiceRating();
@@ -144,13 +157,13 @@ public class ViewActivity extends AppCompatActivity {
                     Log.d("avg",subjectavg);
 
                     if( i == 0 )
-                        Averages.get(0).setRating( Float.parseFloat(subjectavg) );
+                        ratingBars[i].setRating( Float.parseFloat(subjectavg) );
                     else if ( i == 1 )
-                        Averages.get(1).setRating( Float.parseFloat(subjectavg) );
+                        ratingBars[i].setRating( Float.parseFloat(subjectavg) );
                     else if( i == 2 )
-                        Averages.get(2).setRating( Float.parseFloat(subjectavg) );
+                        ratingBars[i].setRating( Float.parseFloat(subjectavg) );
                     else
-                        Averages.get(3).setRating( Float.parseFloat(subjectavg) );
+                        ratingBars[i].setRating( Float.parseFloat(subjectavg) );
                 }
 
             } catch (JSONException e) {

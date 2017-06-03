@@ -12,7 +12,7 @@ public enum EmailAddress {
     김윤상("mailto:yoonsang@koreatech.ac.kr"),
     이재협("mailto:jae@koreatech.ac.kr"),
     윤한경("mailto:yhhan@koreatech.ac.kr"),
-    헌연희("mailto:jaesoo27@koreatech.ac.kr"),
+    한연희("mailto:jaesoo27@koreatech.ac.kr"),
     조재수("mailto:ybjoo@koreatech.ac.kr"),
     주영복("mailto:ybjoo@koreatech.ac.kr"),
     조태훈("mailto:thcho@koreatech.ac.kr"),

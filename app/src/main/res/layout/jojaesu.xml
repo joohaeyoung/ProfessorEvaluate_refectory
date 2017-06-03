@@ -57,7 +57,7 @@
             android:rating="0"
             style="?android:attr/ratingBarStyleSmall"/>
         <Button
-            android:id="@+id/jsj_digitall"
+            android:id="@+id/jjs_digitall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ProfessorEvaluate-refactory01.iml" filepath="$PROJECT_DIR$/ProfessorEvaluate-refactory01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ProfessorEvaluage_refectory.iml" filepath="$PROJECT_DIR$/ProfessorEvaluage_refectory.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

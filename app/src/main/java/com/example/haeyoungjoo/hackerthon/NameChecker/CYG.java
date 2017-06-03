@@ -1,9 +1,5 @@
 package com.example.haeyoungjoo.hackerthon.NameChecker;
 
-import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.RatingBar;
-
 import com.example.haeyoungjoo.hackerthon.R;
 
 import java.util.Map;
@@ -11,14 +7,13 @@ import java.util.Vector;
 
 import static com.example.haeyoungjoo.hackerthon.R.id.cyg_datastructure;
 
-public class CYGNameChacker extends AbstractProfessorNameChecker {
+public class CYG extends AbstractProfessorName {
 
-    public CYGNameChacker(Context context) {
-
-        super(context);
+    public CYG( ) {
+        super();
         NAME = "최영규";
         URL = "cyg";
-        Averages = new Vector<RatingBar>();
+        Averages = new Vector<Integer>();
 
         lectures.put(R.id.cyg_cplusplus,"cyg_cplusplus");
         lectures.put(cyg_datastructure,"cyg_datastructure");
@@ -30,20 +25,18 @@ public class CYGNameChacker extends AbstractProfessorNameChecker {
 
     }
     @Override
-    public void getView(){
-        ((AppCompatActivity) vcontext).setContentView(R.layout.cyg);
+    public int getView(){
+        return R.layout.cyg;
     }
 
     @Override
-    public Vector<RatingBar> ratingBarControl(){
+    public Vector<Integer> ratingBarControl(){
 
-        Averages.addElement((RatingBar)((AppCompatActivity) vcontext).findViewById(R.id.cyg_cplusplus_Average) );
-        Averages.addElement((RatingBar)((AppCompatActivity) vcontext).findViewById(R.id.cyg_datastructure_Average) );
-        Averages.addElement((RatingBar)((AppCompatActivity) vcontext).findViewById(R.id.cyg_graphic_Average) );
+        Averages.addElement(R.id.cyg_cplusplus_Average);
+        Averages.addElement(R.id.cyg_datastructure_Average);
+        Averages.addElement(R.id.cyg_graphic_Average);
         return Averages;
-
     }
-
     public Map getLecture(){
         return lectures;
     }

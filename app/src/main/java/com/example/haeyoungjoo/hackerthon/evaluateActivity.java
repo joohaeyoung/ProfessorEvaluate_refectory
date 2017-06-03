@@ -18,10 +18,10 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.haeyoungjoo.hackerthon.NameChecker.CYGNameChacker;
-import com.example.haeyoungjoo.hackerthon.NameChecker.JGCNameChacker;
-import com.example.haeyoungjoo.hackerthon.NameChecker.JGSNameChacker;
-import com.example.haeyoungjoo.hackerthon.NameChecker.ProfessorNameChecker;
+import com.example.haeyoungjoo.hackerthon.NameChecker.CYG;
+import com.example.haeyoungjoo.hackerthon.NameChecker.JGC;
+import com.example.haeyoungjoo.hackerthon.NameChecker.JGS;
+import com.example.haeyoungjoo.hackerthon.NameChecker.ProfessorName;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -60,12 +60,10 @@ public class evaluateActivity extends Activity {
     Intent i;
     static String lecture;
 
-    ProfessorNameChecker[] nameCheckers = new ProfessorNameChecker[] {
-
-            new CYGNameChacker(this),
-            new JGCNameChacker(this),
-            new JGSNameChacker(this)
-
+    ProfessorName[] nameCheckers = new ProfessorName[] {
+            new CYG(),
+            new JGC(),
+            new JGS()
     };
 
     @Override
@@ -101,15 +99,14 @@ public class evaluateActivity extends Activity {
 
         m_EditText_comment = (EditText) findViewById(R.id.EditTextComment);
     }
+
     @Override
     protected void onPause() {
-
         super.onPause();
-
         Log.d("evaluateActivity","onPause()");
         Intent hi = new Intent(evaluateActivity.this, ViewActivity.class);
 
-        for( ProfessorNameChecker nameChecker : nameCheckers){
+        for( ProfessorName nameChecker : nameCheckers){
             Log.d("isMAtchLecture if ",lecture);
             if ( nameChecker.isMatchLecture(lecture) ){
                 Log.d("isMAtchLecture if ",lecture);
@@ -118,26 +115,21 @@ public class evaluateActivity extends Activity {
                 startActivity(hi);
             }
         }
-
     }
-
     //웹서버에 접근해서 데이터들을 json으로 읽어오는 스레드~
+
     private class JsonReadTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
             Log.d("evaluateActivity","doInBackground()");
-
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost(params[0]); //(params[0]에는 url 값이 들어있습! Post로 서버에 연결.
-
             try {
                 HttpResponse response = httpclient.execute(httppost);//서버로 연결하고 그 결과 값을.
                 InputStream inputStream = response.getEntity().getContent();//서버에서 주는 결과를 받아올수 있는 inputStream 객체 생성.
                 String temp = inputStreamToString(inputStream).toString();//스트림을 매개변수 값으로 넣고 원래 json은 문자열이기때문에 문자열로 바꿔서 온다.
-
                 jsonResult = temp.substring(temp.indexOf('{'));
                 System.out.println(jsonResult);
-
             } catch (ClientProtocolException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -145,18 +137,13 @@ public class evaluateActivity extends Activity {
             }
             return null;
         }
-
         private StringBuilder inputStreamToString(InputStream is) {
-
             Log.d("evaluateActivity","inputStreamToString()");
-
             String rLine = "";
             StringBuilder answer = new StringBuilder();
             BufferedReader rd = new BufferedReader(new InputStreamReader(is));//해당 스트림으로부터 읽어 와서 버퍼에 저장한다~
 
-
             try {
-
                 while ((rLine = rd.readLine()) != null) {
 
                     answer.append(rLine);
@@ -170,7 +157,6 @@ public class evaluateActivity extends Activity {
             Log.d("answer", answer.toString());
             return answer;
         }
-
         @Override
         protected void onPostExecute(String result) {
 
