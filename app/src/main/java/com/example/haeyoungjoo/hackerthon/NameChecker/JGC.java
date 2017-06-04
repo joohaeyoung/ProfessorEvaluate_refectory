@@ -41,7 +41,7 @@ public class JGC extends AbstractProfessorName {
     public String getCall(){
         return PhoneNumber.정구철.getphoneNumber();
     }
-    public String getNumber(){
+    public String getEmail(){
         return EmailAddress.정구철.getEmail();
     }
 }

@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.example.haeyoungjoo.hackerthon.NameChecker.CYG;
 import com.example.haeyoungjoo.hackerthon.NameChecker.JGC;
 import com.example.haeyoungjoo.hackerthon.NameChecker.JGS;
+import com.example.haeyoungjoo.hackerthon.NameChecker.JJS;
+import com.example.haeyoungjoo.hackerthon.NameChecker.JTH;
 import com.example.haeyoungjoo.hackerthon.NameChecker.ProfessorName;
 
 import org.apache.http.HttpResponse;
@@ -60,10 +62,15 @@ public class ViewActivity extends AppCompatActivity {
     String jsonResult1;
 
     ProfessorName[] nameCheckers = new ProfessorName[] {
-
             new CYG(),
             new JGC(),
-            new JGS()
+            new JGS(),
+            new JJS(),
+            new JTH(),
+
+
+
+
 
     };
 
@@ -191,6 +198,7 @@ public class ViewActivity extends AppCompatActivity {
         Log.d("view.getId()",lectures.get(view.getId()) );
         startActivity(i);
         finish();
+
     }
 
     public void onClickCall(View view){
